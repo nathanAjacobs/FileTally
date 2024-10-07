@@ -10,7 +10,9 @@ File Tally is a GUI tool designed to count the number of files in a specified fo
 - **Cross-Platform**: Compatible with multiple operating systems.
 
 ## Video
-[![Watch the video](https://img.youtube.com/vi/Ly0q5RaAqbo/hqdefault.jpg)](https://www.youtube.com/watch?v=Ly0q5RaAqbo)
+<a href="https://www.youtube.com/watch?v=Ly0q5RaAqbo" target="_blank">
+  <img src="https://img.youtube.com/vi/Ly0q5RaAqbo/hqdefault.jpg" alt="Watch the video">
+</a>
 
 ## Installation
 - No compiled binaries have been made yet.
