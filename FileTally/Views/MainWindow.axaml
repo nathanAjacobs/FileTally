@@ -1,0 +1,81 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:FileTally.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="400"
+        MinHeight="400"
+        MinWidth="600"
+        Height="400"
+        Width="600"
+        x:Class="FileTally.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="FileTally"
+        Icon="/Assets/icon.ico"
+        WindowStartupLocation="CenterScreen">
+
+  <Design.DataContext>
+    <vm:MainWindowViewModel/>
+  </Design.DataContext>
+  <StackPanel Margin="40"
+              VerticalAlignment="Stretch"
+              HorizontalAlignment="Stretch"
+              Spacing="30">
+
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" /> <!-- This column will grow -->
+        <ColumnDefinition Width="10" /> <!-- Spacer column, centered -->
+        <ColumnDefinition Width="*" /> <!-- This column will grow -->
+      </Grid.ColumnDefinitions>
+      
+      <Label VerticalAlignment="Center"
+             Grid.Row="0"
+             Grid.Column="0"
+             Content="Mode: "
+             Target="{Binding ElementName=modeComboBox}"/>
+      <ComboBox Name="modeComboBox"
+                HorizontalAlignment="Stretch"
+                Grid.Row="0"
+                Grid.Column="2"
+                SelectedItem="{Binding SelectedSearchMode}"
+                ItemsSource="{Binding SearchModeValues}">
+      </ComboBox>
+      
+      <Label VerticalAlignment="Center"
+             Grid.Row="1"
+             Grid.Column="0"
+             Margin="0,20,0,0"
+             Content="File Extensions:"
+             Target="{Binding ElementName=fileTypesTextBox}"/>
+      <TextBox Name="fileTypesTextBox"
+               Grid.Row="1"
+               Grid.Column="2"
+               Margin="0,20,0,0"
+               Text="{Binding FileTypes}"/>
+
+      <Label VerticalAlignment="Center"
+             Grid.Row="2"
+             Grid.Column="0"
+             Margin="0,20,0,0"
+             Content="Include Sub Folders: "
+             Target="{Binding ElementName=includeSubFoldersCheckBox}"/>
+      <CheckBox Name="includeSubFoldersCheckBox"
+                Grid.Row="2"
+                Grid.Column="2"
+                Margin="0,20,0,0"
+                IsChecked="{Binding IncludeSubFolders}"
+                />
+    </Grid>
+    <Button Content="Select Folder"
+            HorizontalAlignment="Center"
+            Click="OnSelectFolderClicked"/>
+    <Label HorizontalAlignment="Center" Content="{Binding SelectedFolder}"/>
+    <Label HorizontalAlignment="Center" Content="{Binding FileCount}" />
+  </StackPanel>
+</Window>
